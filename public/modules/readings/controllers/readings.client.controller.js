@@ -1,10 +1,11 @@
 'use strict';
 
 // Readings controller
-angular.module('readings').controller('ReadingsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Readings',
-	function($scope, $stateParams, $location, Authentication, Readings) {
+angular.module('readings').controller('ReadingsController',
+      ['$scope', '$stateParams', '$location', 'Authentication', 'Readings', 'Cars',
+	function($scope, $stateParams, $location, Authentication, Readings, Cars) {
 		$scope.authentication = Authentication;
-
+        $scope.cars = Cars.query();
 		// Create new Reading
 		$scope.create = function() {
 			// Create new Reading object
@@ -25,7 +26,7 @@ angular.module('readings').controller('ReadingsController', ['$scope', '$statePa
 
 		// Remove existing Reading
 		$scope.remove = function(reading) {
-			if ( reading ) { 
+			if ( reading ) {
 				reading.$remove();
 
 				for (var i in $scope.readings) {
@@ -58,7 +59,7 @@ angular.module('readings').controller('ReadingsController', ['$scope', '$statePa
 
 		// Find existing Reading
 		$scope.findOne = function() {
-			$scope.reading = Readings.get({ 
+			$scope.reading = Readings.get({
 				readingId: $stateParams.readingId
 			});
 		};

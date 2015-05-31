@@ -3,17 +3,40 @@
         <h1>Edit Reading</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+       <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="reading.name" id="name" class="form-control" placeholder="Name" required>
+                    <label for="odoreading">How many miles your car has travelled so far:</label>
+                    <div class="input-group">
+                        <input id="odoreading" data-ng-model="odoreading" class="form-control" type="text" placeholder="odometer reading"/>
+                        <div class="input-group-btn">
+                            <select id="distanceunit" data-ng-model="distanceunit" name="distanceunit" class="btn btn-default dropdown-toggle">
+                                <option value="mil">Miles</option>
+                                <option value="kms">KiloMeters</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
+                    <label for="fuelreading">How much fuel you just filled in your car?</label>
+                    <div class="input-group">
+                        <input id="fuelreading" data-ng-model="fuelreading" type="text" class="form-control" type="text" placeholder="station pump reading"/>
+                        <div class="input-group-btn">
+                            <select id="fuelunit" data-ng-model="fuelunit" name="fuelunit" class="btn btn-default dropdown-toggle">
+                                <option value="galn">Gallons</option>
+                                <option value="litr">Litres</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+                <div class="form-group" >
+                    <label>Select your car first:</label>
+                    <select id="car" name="car" class="btn btn-default dropdown-toggle">
+                    </select>
+                </div>
+               <div class="form-group">
+                   <input type="submit" value="Update" class="btn btn-default">
+               </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
